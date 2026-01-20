@@ -1,5 +1,6 @@
 package com.hospitalManagement.entity;
 
+import com.hospitalManagement.entity.type.Auth2ProviderType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,6 +26,10 @@ public class User implements UserDetails {
     @JoinColumn(unique = true, nullable = false)
     private String username;
     private String password;
+
+    private String providerId;
+    @Enumerated(EnumType.STRING)
+    private Auth2ProviderType auth2ProviderType;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
